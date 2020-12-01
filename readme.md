@@ -1,4 +1,5 @@
 # COVID Test Collector
+[![Build Status](https://travis-ci.com/adigoswami/Covid_Test_Collector.svg?branch=master)](https://travis-ci.com/adigoswami/Covid_Test_Collector)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 ---
 ## Overview
