@@ -1,5 +1,6 @@
 # COVID Test Collector
 [![Build Status](https://travis-ci.com/adigoswami/Covid_Test_Collector.svg?branch=master)](https://travis-ci.com/adigoswami/Covid_Test_Collector)
+[![Coverage Status](https://coveralls.io/repos/github/adigoswami/Covid_Test_Collector/badge.svg?branch=master)](https://coveralls.io/github/adigoswami/Covid_Test_Collector?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 ---
 ## Overview
