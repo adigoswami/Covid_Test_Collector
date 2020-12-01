@@ -61,3 +61,7 @@ The above command will automatically start the Gazebo application.
 * Aditya Goswami, a roboticist working on his Masters at UMD.
 * Divyam Garg, a roboticist working on his Masters at UMD.
 * Loic Barret, a roboticist working on his Masters at UMD.
+
+## Engineering Processes and Documentation
+
+Details on the status of our Agile Iterative Process (AIP) [can be found here](https://docs.google.com/spreadsheets/d/10cpo2Re5zrbF_mUIyMr8Sx5FKHKt6Mrn-Ivr-KDWnJc/edit#gid=0).
