@@ -65,4 +65,5 @@ The above command will automatically start the Gazebo application.
 ## Engineering Processes and Documentation
 
 Details on the status of our Agile Iterative Process (AIP) [can be found here](https://docs.google.com/spreadsheets/d/10cpo2Re5zrbF_mUIyMr8Sx5FKHKt6Mrn-Ivr-KDWnJc/edit#gid=0).
+
 Sprint planning notes and reviews [can be found here](https://docs.google.com/document/d/1CCWeLmtiCO7ryK99hW5JX2HLfT2YCf6n72l16aEfRKY/edit?usp=sharing).
