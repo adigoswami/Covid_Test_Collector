@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2
   move_base_msgs
   actionlib
+  fiducial_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -108,7 +109,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES Covid_Test_Collector
-  CATKIN_DEPENDS roscpp rospy std_msgs tf2 move_base_msgs actionlib
+  CATKIN_DEPENDS roscpp rospy std_msgs tf2 move_base_msgs actionlib fiducial_msgs
 #  DEPENDS system_lib
 )
 
@@ -205,6 +206,6 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(tiagovid_test ${catkin_LIBRARIES})
 endif()
 
-add_executable(Controller src/RobotController.cpp src/RobotNavigation.cpp)
+add_executable(Controller src/RobotController.cpp src/RobotNavigation.cpp src/RobotVision.cpp)
 target_link_libraries(Controller ${catkin_LIBRARIES})
 
