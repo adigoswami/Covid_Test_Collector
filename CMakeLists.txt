@@ -205,6 +205,6 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(tiagovid_test ${catkin_LIBRARIES})
 endif()
 
-add_executable(Navigation src/RobotController.cpp src/RobotNavigation.cpp)
-target_link_libraries(Navigation ${catkin_LIBRARIES})
+add_executable(Controller src/RobotController.cpp src/RobotNavigation.cpp)
+target_link_libraries(Controller ${catkin_LIBRARIES})
 
