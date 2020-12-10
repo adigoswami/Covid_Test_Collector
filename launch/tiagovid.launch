@@ -4,8 +4,19 @@
 <arg name="public_sim" value="true" />
 </include>
 
+<include file="$(find aruco_detect)/launch/aruco_detect.launch">
+<arg name="camera" value="/xtion/rgb" />
+<arg name="dictionary" value="16" />
+<arg name="fiducial_len" value=".045" />
+<arg name="image" value="image_raw" />
+<arg name="ignore_fiducials" value="0-581,583-1023" />
+</include>
+
 <node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find tiago_gazebo)/models/aruco_cube/aruco_cube.sdf -model aruco_cube -x -1 -y -9 -z 2 -P 1.57"  />
 
 <node pkg="Covid_Test_Collector" type="Controller" name="Controller"
 />
+
+
+
 </launch>

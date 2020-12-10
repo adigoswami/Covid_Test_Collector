@@ -31,12 +31,12 @@ int main(int argc, char **argv) {
    * while loop that will drive the turtlebot around at the rate 
    * defined above until ros shuts down
    */
-  while (ros::ok()) {
-    tiagovid_navigator.sendGoal(1.0, -5.0, -M_PI/2);
-    tiagovid_navigator.sendGoal(1.0, -7.0, M_PI);
-    ros::spinOnce();
-    loop_rate.sleep();
-  }
+
+  tiagovid_navigator.sendGoal(1.5, -4.0, -M_PI/2);
+  tiagovid_navigator.sendGoal(0, -7.0, M_PI);
+  tiagovid_navigator.sendGoal(0, -9.0, M_PI);
+  ros::spinOnce();
+
 
   return 0;
 }
