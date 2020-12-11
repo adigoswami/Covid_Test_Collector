@@ -33,18 +33,64 @@ int main(int argc, char **argv) {
    * while loop that will drive the turtlebot around at the rate 
    * defined above until ros shuts down
    */
-  while(ros::ok()) {
-    ROS_INFO("checking for marker");
-    std::cout << tiagovid_vision.ft.transform.translation.x;
-    loop_rate.sleep();
-    ros::spinOnce();
-  }
-  //tiagovid_navigator.sendGoal(1.5, -4.0, -M_PI/2);
-  //tiagovid_navigator.sendGoal(0, -7.0, M_PI);
 
-  //tiagovid_navigator.sendGoal(0, -9.0, M_PI);
-  
-  ros::spinOnce();
+  tiagovid_navigator.sendGoal(1.5, -4.0, -M_PI/2);
+  while(ros::ok()){
+
+    // Move to first goal
+    tiagovid_navigator.sendGoal(.1, -7.0, M_PI);
+    ROS_INFO("Checking for Object");
+    int i = 0;
+    while(ros::ok()) {
+      if(tiagovid_vision.seen || i > 20){
+        break;
+      }
+      loop_rate.sleep();
+      ros::spinOnce();
+      ++i;
+    }
+    if (tiagovid_vision.seen){
+      std::cout << "found";
+      break;
+    }
+
+
+    tiagovid_navigator.sendGoal(.1, -9.0, M_PI);
+    ROS_INFO("Checking for Object");
+    i = 0;
+    while(ros::ok()) {
+      if(tiagovid_vision.seen || i > 20){
+        break;
+      }
+      loop_rate.sleep();
+      ros::spinOnce();
+      ++i;
+    }
+    if (tiagovid_vision.seen){
+      std::cout << "found";
+      break;
+    }
+
+    //Move to 3rd table
+    tiagovid_navigator.sendGoal(.1, -11.0, M_PI);
+
+    //check for object
+    ROS_INFO("Checking for Object");
+    i = 0;
+    while(ros::ok()) {
+      if(tiagovid_vision.seen || i > 20){
+        break;
+      }
+      loop_rate.sleep();
+      ros::spinOnce();
+      ++i;
+    }
+    if (tiagovid_vision.seen){
+      std::cout << "found";
+      break;
+    }    
+  }
+
 
 
   return 0;

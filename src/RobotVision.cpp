@@ -36,14 +36,19 @@ void RobotVision::init() {
  * @return none
  */
 void RobotVision::scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg) {
-  ft = msg->transforms[0];
+  
+  if (msg->transforms.size() > 0){
+    ft = msg->transforms[0];
+    seen = true;
+
+  }
 
   //position.setValue(ft.transform.translation.x, ft.transform.translation.y, ft.transform.translation.z);
   //q.setValue(ft.transform.rotation.x, ft.transform.rotation.y, ft.transform.rotation.z, ft.transform.rotation.w);
 
 }
 
-void RobotVision::outputPose(){
-  std::cout << ft.transform.translation.x << ", " << ft.transform.translation.y << ", "<< ft.transform.translation.z << std::endl;
+fiducial_msgs::FiducialTransform RobotVision::getPose(){
+  return ft;
 }
 

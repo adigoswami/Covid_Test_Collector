@@ -12,8 +12,11 @@
 <arg name="ignore_fiducials" value="0-581,583-1023" />
 </include>
 
-<node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find tiago_gazebo)/models/aruco_cube/aruco_cube.sdf -model aruco_cube -x -1 -y -9 -z 2 -P 1.57"  />
+<node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find tiago_gazebo)/models/aruco_cube/aruco_cube.sdf -model aruco_cube -x -.5 -y -9 -z 1 -P 1.57"  />
 
+<node name="move_joint" pkg="play_motion" type="move_joint" args="head_2_joint -0.5 2.0" respawn="true" respawn_delay="30"/>
 
+<node pkg="Covid_Test_Collector" type="Controller" name="Controller"
+/>
 
 </launch>

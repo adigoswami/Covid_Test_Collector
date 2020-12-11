@@ -25,8 +25,9 @@ class RobotVision {
   RobotVision();
   void init();
   void solve();
-  void outputPose();
+  fiducial_msgs::FiducialTransform getPose();
   fiducial_msgs::FiducialTransform ft;
+  bool seen = false;
 
  /**
   * contains private data members

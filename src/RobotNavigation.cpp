@@ -27,9 +27,9 @@ void RobotNavigation::sendGoal(double x, double y, double w){
     ac.waitForResult();
 
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-      ROS_INFO("Hooray, the base moved 1 meter forward");
+      ROS_INFO("Hooray, goal was met");
     else
-      ROS_INFO("The base failed to move forward 1 meter for some reason");
+      ROS_INFO("The base failed to move to the goal");
 
 }
 
