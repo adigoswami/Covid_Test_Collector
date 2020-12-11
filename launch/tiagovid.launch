@@ -2,6 +2,7 @@
 
 <include file="$(find tiago_2dnav_gazebo)/launch/tiago_mapping.launch">
 <arg name="public_sim" value="true" />
+<arg name="robot" value="steel" />
 </include>
 
 <include file="$(find aruco_detect)/launch/aruco_detect.launch">
@@ -18,5 +19,7 @@
 
 <node pkg="Covid_Test_Collector" type="Controller" name="Controller"
 />
+
+
 
 </launch>

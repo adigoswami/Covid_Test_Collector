@@ -9,6 +9,7 @@
 
 #include "../include/RobotNavigation.hpp"
 #include "../include/RobotVision.hpp"
+#include "../include/RobotArm.hpp"
 #include <math.h>
 
 
@@ -23,6 +24,7 @@ int main(int argc, char **argv) {
    */
   RobotNavigation tiagovid_navigator;
   RobotVision tiagovid_vision;
+  RobotArm tiagovid_arm;
 
   /**
    * define what rate we want the loop to run at
@@ -35,7 +37,12 @@ int main(int argc, char **argv) {
    */
 
   tiagovid_navigator.sendGoal(1.5, -4.0, -M_PI/2);
+
+  ros::Duration(15).sleep();
+
   while(ros::ok()){
+
+
 
     // Move to first goal
     tiagovid_navigator.sendGoal(.1, -7.0, M_PI);
@@ -91,7 +98,7 @@ int main(int argc, char **argv) {
     }    
   }
 
-
+  tiagovid_arm.moveArm(tiagovid_vision.ft);
 
   return 0;
 }
