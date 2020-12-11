@@ -26,6 +26,7 @@ class RobotVision {
   void init();
   void solve();
   void outputPose();
+  fiducial_msgs::FiducialTransform ft;
 
  /**
   * contains private data members
@@ -35,7 +36,8 @@ class RobotVision {
 
   ros::Subscriber scan_sub;
 
-  tf2::Vector3 tvec;
+  tf2::Vector3 position;
   tf2::Quaternion q;
+
   void scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg);
 };

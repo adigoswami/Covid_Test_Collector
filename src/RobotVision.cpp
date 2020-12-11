@@ -26,7 +26,7 @@ RobotVision::RobotVision() {
  * @return none
  */
 void RobotVision::init() {
-  scan_sub = nh.subscribe("fiducial_transforms", 10, &RobotVision::scanCallback, this);
+  scan_sub = nh.subscribe("/fiducial_transforms", 1, &RobotVision::scanCallback, this);
 }
 
 
@@ -36,15 +36,14 @@ void RobotVision::init() {
  * @return none
  */
 void RobotVision::scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg) {
-  const fiducial_msgs::FiducialTransform &ft = msg->transforms[0];
+  ft = msg->transforms[0];
 
-  tvec = tf2::Vector3(ft.transform.translation.x, ft.transform.translation.y, ft.transform.translation.z);
-
-  q = tf2::Quaternion(ft.transform.rotation.x, ft.transform.rotation.y, ft.transform.rotation.z, ft.transform.rotation.w);
+  //position.setValue(ft.transform.translation.x, ft.transform.translation.y, ft.transform.translation.z);
+  //q.setValue(ft.transform.rotation.x, ft.transform.rotation.y, ft.transform.rotation.z, ft.transform.rotation.w);
 
 }
 
 void RobotVision::outputPose(){
-   std::cout << tvec[0];
+  std::cout << ft.transform.translation.x << ", " << ft.transform.translation.y << ", "<< ft.transform.translation.z << std::endl;
 }
 
