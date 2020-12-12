@@ -1,16 +1,6 @@
 // user defined header files for control class
 #include "../include/RobotArm.hpp"
 
-RobotArm::RobotArm(){
-  safePose.pose.position.x = 0.363;
-  safePose.pose.position.y = -0.197;
-  safePose.pose.position.z = 1.0;
-  safePose.pose.orientation.x = 0.707;
-  safePose.pose.orientation.y = 0;
-  safePose.pose.orientation.z = 0;
-  safePose.pose.orientation.w = 0.707; 
-}
-
 int RobotArm::moveArm(geometry_msgs::PoseStamped goal_pose){
 
   ros::AsyncSpinner spinner(1);
@@ -51,5 +41,25 @@ int RobotArm::moveArm(geometry_msgs::PoseStamped goal_pose){
 
   return 0;
 
+
+}
+
+void RobotArm::grip(){
+  
+  grip_goal.trajectory.joint_names.push_back("gripper_left_finger_joint");
+  grip_goal.trajectory.joint_names.push_back("gripper_right_finger_joint");
+  grip_goal.trajectory.points.resize(1);
+  grip_goal.trajectory.points[0].positions.resize(2);
+  grip_goal.trajectory.points[0].positions[0] = 0.0;
+  grip_goal.trajectory.points[0].positions[1] = 0.0;
+  grip_goal.trajectory.points[0].time_from_start = ros::Duration(4.0);
+
+  grip_ac.sendGoal(grip_goal);
+  grip_ac.waitForResult();
+
+  if(grip_ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    ROS_INFO("Hooray, goal was met");
+  else
+    ROS_INFO("The base failed to move to the goal");
 
 }

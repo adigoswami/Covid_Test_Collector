@@ -29,6 +29,7 @@ class RobotVision {
   RobotVision();
   void init();
   void setPose();
+  
   fiducial_msgs::FiducialTransform ft;
   geometry_msgs::PoseStamped object;
   geometry_msgs::PoseStamped object_above;

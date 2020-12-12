@@ -18,7 +18,7 @@ class RobotNavigation {
         RobotNavigation() : ac("move_base", true){
         	ROS_INFO("Waiting for action server to start.");
             ac.waitForServer();
-            ROS_INFO("Action server started, sending goal.");
+            ROS_INFO("Action server started");
         }
         void sendGoal(double x, double y, double w);
         

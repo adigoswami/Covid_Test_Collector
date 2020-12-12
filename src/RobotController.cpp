@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 
 
     // Move to first goal
-   // tiagovid_navigator.sendGoal(.1, -7.0, M_PI);
+   // tiagovid_navigator.sendGoal(.5, -7.0, M_PI);
     ROS_INFO("Checking for Object");
     int i = 0;
     while(ros::ok()) {
@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     }
 
 
-    //tiagovid_navigator.sendGoal(.1, -9.0, M_PI);
+    //tiagovid_navigator.sendGoal(.5, -9.0, M_PI);
     ROS_INFO("Checking for Object");
     i = 0;
     while(ros::ok()) {
@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
     }
 
     //Move to 3rd table
-    //tiagovid_navigator.sendGoal(.1, -11.0, M_PI);
+    //tiagovid_navigator.sendGoal(.5, -11.0, M_PI);
 
     //check for object
     ROS_INFO("Checking for Object");
@@ -100,6 +100,8 @@ int main(int argc, char **argv) {
 
   tiagovid_arm.moveArm(tiagovid_vision.object_above);
   tiagovid_arm.moveArm(tiagovid_vision.object_in_grasp);
+  tiagovid_arm.grip();
+  tiagovid_arm.moveArm(tiagovid_arm.safePose);
 
   return 0;
 }

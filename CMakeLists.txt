@@ -19,6 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   tf2_geometry_msgs
   tf2_ros
+  control_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -113,7 +114,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES Covid_Test_Collector
-  CATKIN_DEPENDS roscpp rospy std_msgs tf2 move_base_msgs actionlib fiducial_msgs moveit_ros_planning_interface geometry_msgs tf2_geometry_msgs tf2_ros
+  CATKIN_DEPENDS roscpp rospy std_msgs tf2 move_base_msgs actionlib fiducial_msgs moveit_ros_planning_interface geometry_msgs tf2_geometry_msgs tf2_ros control_msgs
 #  DEPENDS system_lib
 )
 
