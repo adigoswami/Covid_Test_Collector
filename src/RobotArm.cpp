@@ -1,24 +1,29 @@
 // user defined header files for control class
 #include "../include/RobotArm.hpp"
 
-RobotArm::RobotArm(){}
+RobotArm::RobotArm(){
+  safePose.pose.position.x = 0.363;
+  safePose.pose.position.y = -0.197;
+  safePose.pose.position.z = 1.0;
+  safePose.pose.orientation.x = 0.707;
+  safePose.pose.orientation.y = 0;
+  safePose.pose.orientation.z = 0;
+  safePose.pose.orientation.w = 0.707; 
+}
 
-void RobotArm::moveArm(fiducial_msgs::FiducialTransform pose){
-  geometry_msgs::PoseStamped goal_pose;
-  goal_pose.header.frame_id = "map";
+int RobotArm::moveArm(geometry_msgs::PoseStamped goal_pose){
 
+  ros::AsyncSpinner spinner(1);
+  spinner.start();
   
-  goal_pose.pose.position.x = pose.transform.translation.x;
-  goal_pose.pose.position.y = pose.transform.translation.y;
-  goal_pose.pose.position.z = pose.transform.translation.z;
-  goal_pose.pose.orientation = pose.transform.rotation;
+  goal_pose.header.frame_id = "base_footprint";
 
   std::vector<std::string> torso_arm_joint_names;
   //select group of joints
   moveit::planning_interface::MoveGroupInterface group_arm_torso("arm_torso");
   //choose your preferred planner
   group_arm_torso.setPlannerId("SBLkConfigDefault");
-  group_arm_torso.setPoseReferenceFrame("map");
+  group_arm_torso.setPoseReferenceFrame("base_footprint");
   group_arm_torso.setPoseTarget(goal_pose);
 
   ROS_INFO_STREAM("Planning to move " <<
@@ -42,5 +47,9 @@ void RobotArm::moveArm(fiducial_msgs::FiducialTransform pose){
   group_arm_torso.move();
 
   ROS_INFO_STREAM("Motion duration: " << (ros::Time::now() - start).toSec());
+  spinner.stop();
+
+  return 0;
+
 
 }

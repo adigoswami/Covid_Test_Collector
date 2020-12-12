@@ -9,6 +9,8 @@
 #include <vector>
 #include "fiducial_msgs/FiducialTransformArray.h"
 #include <map>
+#include <geometry_msgs/PoseStamped.h>
+
 
 class RobotArm {
     private:
@@ -16,6 +18,8 @@ class RobotArm {
 
     public:
         RobotArm();
-        void moveArm(fiducial_msgs::FiducialTransform pose);
+        int moveArm(geometry_msgs::PoseStamped pose);
+        geometry_msgs::PoseStamped safePose;
+        
         
 };
