@@ -57,15 +57,17 @@ void RobotVision::setPose(){
   object.pose.position.z  = ft.transform.translation.z;
   tf2::doTransform(object.pose, object.pose, camera_to_base_link);
 
-  object_above.pose.position.x = object.pose.position.x - .1;
-  object_above.pose.position.z = object.pose.position.z + .3;
+  object_above.pose.position.x = object.pose.position.x - 0.1;
+  object_above.pose.position.y = object.pose.position.y;
+  object_above.pose.position.z = object.pose.position.z + 0.3;
   object_above.pose.orientation.x = 0.707;
   object_above.pose.orientation.y = 0;
   object_above.pose.orientation.z = 0;
   object_above.pose.orientation.w = 0.707; 
 
 
-  object_in_grasp.pose.position.x = object.pose.position.x - .1;
+  object_in_grasp.pose.position.x = object.pose.position.x - 0.1;
+  object_in_grasp.pose.position.y = object.pose.position.y;
   object_in_grasp.pose.position.z = object.pose.position.z;
   object_in_grasp.pose.orientation.x = 0.707;
   object_in_grasp.pose.orientation.y = 0;

@@ -31,10 +31,20 @@ class RobotArm {
             safePose.pose.orientation.y = 0;
             safePose.pose.orientation.z = 0;
             safePose.pose.orientation.w = 0.707;
+            collectPose.pose.position.x = 0.5;
+            collectPose.pose.position.y = -0.197;
+            collectPose.pose.position.z = 0.9;
+            collectPose.pose.orientation.x = 0.707;
+            collectPose.pose.orientation.y = 0;
+            collectPose.pose.orientation.z = 0;
+            collectPose.pose.orientation.w = 0.707;
+
         }
         int moveArm(geometry_msgs::PoseStamped pose);
         geometry_msgs::PoseStamped safePose;
+        geometry_msgs::PoseStamped collectPose;
         void grip();
+        void release();
         joint_control_client grip_ac;
         control_msgs::FollowJointTrajectoryGoal grip_goal;
 
