@@ -1,3 +1,13 @@
+/**
+ * @file       RobotVision.cpp
+ * @version    1.0
+ * @brief      Declares robot navigation methods and attributes
+ * @created    10th Dec 2020
+ * @copyright  Copyright 2020. All rights reserved
+ * @Author :   Loic Barret 
+ */
+#pragma once
+
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <move_base_msgs/MoveBaseAction.h>
@@ -6,7 +16,9 @@
 #include <tf2/LinearMath/Quaternion.h>
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
-
+/**
+ * Creates the Robot Navigation class
+ */
 class RobotNavigation {
     private:
     	ros::NodeHandle nh;

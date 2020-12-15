@@ -1,3 +1,12 @@
+/**
+ * @file       RobotVision.cpp
+ * @version    1.0
+ * @brief      Declares robot arm methods and attributes
+ * @created    10th Dec 2020
+ * @copyright  Copyright 2020. All rights reserved
+ * @Author :   Loic Barret 
+ */
+#pragma once
 // ROS headers
 #include <ros/ros.h>
 
@@ -14,7 +23,9 @@
 #include <control_msgs/FollowJointTrajectoryAction.h>
 
 typedef actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction> joint_control_client;
-
+/**
+ * Creates the Robot Arm class 
+ */
 class RobotArm {
     private:
     	ros::NodeHandle nh;
@@ -24,6 +35,10 @@ class RobotArm {
             ROS_INFO("Waiting for action server to start.");
             grip_ac.waitForServer();
             ROS_INFO("Action server started");
+            /**
+             * Set the safe position of the arm to move the robot in and
+             * the position to place the object in the collection area 
+             */
             safePose.pose.position.x = 0.363;
             safePose.pose.position.y = -0.197;
             safePose.pose.position.z = 1.0;
@@ -38,9 +53,8 @@ class RobotArm {
             collectPose.pose.orientation.y = 0;
             collectPose.pose.orientation.z = 0;
             collectPose.pose.orientation.w = 0.707;
-
         }
-        int moveArm(geometry_msgs::PoseStamped pose);
+        void moveArm(geometry_msgs::PoseStamped pose);
         geometry_msgs::PoseStamped safePose;
         geometry_msgs::PoseStamped collectPose;
         void grip();

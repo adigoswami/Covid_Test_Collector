@@ -1,8 +1,8 @@
 /**
- * @file       control.hpp
+ * @file       RobotVision.cpp
  * @version    1.0
- * @brief      Header file for control class.
- * @created    20th Nov 2020
+ * @brief      Declares robot vision methods and attributes
+ * @created    10th Dec 2020
  * @copyright  Copyright 2020. All rights reserved
  * @Author :   Loic Barret 
  */
@@ -19,12 +19,9 @@
 
 
 /**
- * creates the control class
+ * Creates the Robot Vision class
  */
 class RobotVision {
- /**
-  * contains public data members
-  */
  public:
   RobotVision();
   void init();
@@ -36,14 +33,8 @@ class RobotVision {
   geometry_msgs::PoseStamped object_in_grasp;
   bool seen = false;
 
-
- /**
-  * contains private data members
-  */ 
  private:
   ros::NodeHandle nh;
-
   ros::Subscriber scan_sub;
-
   void scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg);
 };
