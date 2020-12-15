@@ -26,7 +26,7 @@ Then copy the [rosinstall file](install/tiago_public-melodic.rosinstall) into th
 
 ```
 cd ~/tiagovid_ws
-rosinstall src /opt/ros/melodic tiago_public.rosinstall
+rosinstall src /opt/ros/melodic tiago_public-melodic.rosinstall
 ```
 Finally, run the following to make sure all the dependencies referenced in the workspace are installed
 
@@ -42,6 +42,7 @@ To build this project, run the following:
 source /opt/ros/melodic/setup.bash
 catkin build -DCATKIN_ENABLE_TESTING=0
 ```
+Note: This may take a while to build all the packages in the project.
 
 ## Running
 
