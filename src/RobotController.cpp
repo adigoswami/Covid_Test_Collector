@@ -30,6 +30,7 @@ int main(int argc, char **argv) {
    * define what rate we want robot to check for the object
    */
   ros::Rate loop_rate(10);
+  ros::Duration(10).sleep();
 
   /**
    * Move the robot arm to a safe position to move around in
