@@ -1,15 +1,38 @@
+/**
+ * @file       RobotVision.cpp
+ * @version    1.0
+ * @brief      Declares robot navigation methods and attributes
+ * @created    10th Dec 2020
+ * @copyright  Copyright 2020. All rights reserved
+ * @Author :   Loic Barret 
+ */
+#pragma once
+
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include <move_base_msgs/MoveBasActions.h>
+#include <move_base_msgs/MoveBaseAction.h>
+#include <actionlib/client/simple_action_client.h>
 #include <iostream>
+#include <tf2/LinearMath/Quaternion.h>
 
+typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
+/**
+ * Creates the Robot Navigation class
+ */
 class RobotNavigation {
     private:
-     ros::Pubblisher pub;
-     ros::Subscriber sub;
-     move_base_msgs::MoveBaseGoal goal;
+    	ros::NodeHandle nh;
+        ros::Publisher goal_pub;
+        move_base_msgs::MoveBaseGoal goal;
+        MoveBaseClient ac;
 
     public:
-     RobotNavigation();
-     void sendGoal();
-}
+        RobotNavigation() : ac("move_base", true){
+        	ROS_INFO("Waiting for action server to start.");
+            ac.waitForServer();
+            ROS_INFO("Action server started");
+        }
+        void sendGoal(double x, double y, double w);
+        
+
+};
