@@ -32,9 +32,10 @@ class RobotVision {
   geometry_msgs::PoseStamped object_above;
   geometry_msgs::PoseStamped object_in_grasp;
   bool seen = false;
+  void scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg);
 
  private:
   ros::NodeHandle nh;
   ros::Subscriber scan_sub;
-  void scanCallback(const fiducial_msgs::FiducialTransformArray::ConstPtr &msg);
+  
 };

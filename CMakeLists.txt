@@ -201,15 +201,51 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+
 #############
 ## Testing ##
 #############
 
 if(CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-  add_rostest_gtest(tiagovid_test launch/tiagovid.launch Tests/utest.cpp)
-  target_link_libraries(tiagovid_test ${catkin_LIBRARIES})
+ find_package(rostest REQUIRED)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+ add_rostest_gtest(testRobot 
+                   Tests/test.launch 
+                   Tests/main.cpp
+                   Tests/utest.cpp)
+
+
+target_link_libraries(testRobot 
+        ${catkin_LIBRARIES})
+
+add_dependencies(testRobot
+#         detector_test
+#         mover_test
+         ${catkin_EXPORTED_TARGETS})
 endif()
+
+ #add_rostest_gtest(testRobot
+ #        test/test.launch
+ #        test/main.cpp
+ #        test/detectorTest.cpp
+ #        test/moverTest.cpp
+ #        src/turtlebotDetector.cpp
+ #        src/turtlebotMover.cpp)
+
+ #target_link_libraries(testRobot
+ #        ${catkin_LIBRARIES}
+ #        ${OpenCV_LIBS})
+
+ #add_dependencies(testRobot
+#         detector_test
+#         mover_test
+#         ${catkin_EXPORTED_TARGETS})
+
+#if(CATKIN_ENABLE_TESTING)
+#  find_package(rostest REQUIRED)
+#  add_rostest_gtest(tiagovid_test launch/tiagovid.launch Tests/utest.cpp)
+#  target_link_libraries(tiagovid_test ${catkin_LIBRARIES})
+
 
 add_executable(Controller src/RobotController.cpp src/RobotNavigation.cpp src/RobotVision.cpp src/RobotArm.cpp)
 target_link_libraries(Controller ${catkin_LIBRARIES})
